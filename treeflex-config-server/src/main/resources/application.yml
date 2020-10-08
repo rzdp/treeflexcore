@@ -8,6 +8,7 @@ spring:
           uri: https://github.com/rzdp/treeflexcore-config.git
           search-paths:
             - test-service
+            - treeflex-authorization-server
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
   profiles:
