@@ -12,4 +12,4 @@ services:
       - treeflex-microservices-network
 
 networks:
-  - treeflex-microservices-network
+  treeflex-microservices-network
