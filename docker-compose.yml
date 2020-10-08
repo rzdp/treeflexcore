@@ -6,6 +6,8 @@ services:
     build:
       context: treeflex-config-server
       dockerfile: Dockerfile
+    env_file:
+      - treeflex-config-server/example.env
     ports:
     - 8888:8888
     networks:

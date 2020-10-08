@@ -8,8 +8,8 @@ spring:
           uri: https://github.com/rzdp/treeflexcore-config.git
           search-paths:
             - test-service
-          username: ${git.username}
-          password: ${git.password}
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
   profiles:
     active: default
 server:
