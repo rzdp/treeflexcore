@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: treeflex-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rzdp/treeflexcore-config.git
+          search-paths:
+            - test-service
+          username: ${git.username}
+          password: ${git.password}
+  profiles:
+    active: default
+server:
+  port: 8888
