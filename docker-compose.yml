@@ -12,6 +12,19 @@ services:
     - 8888:8888
     networks:
       - treeflex-microservices-network
+  authorization-server:
+    image: rzdp97/treeflex-authorization-server:0.0.1-SNAPSHOT.jar
+    build:
+      context: treeflex-authorization-server
+      dockerfile: Dockerfile
+    env_file:
+      - treeflex-authorization-server/example.env
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-server
+    networks:
+      - treeflex-microservices-network
 
 networks:
   treeflex-microservices-network:
