@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  config-server:
+    image: rzdp97/treeflex-config-server:0.0.1-SNAPSHOT.jar
+    build:
+      context: treeflex-config-server
+      dockerfile: Dockerfile
+    ports:
+    - 8888:8888
+    networks:
+      - treeflex-microservices-network
+
+networks:
+  - treeflex-microservices-network
