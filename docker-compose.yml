@@ -25,6 +25,6 @@ services:
       - config-server
     networks:
       - treeflex-microservices-network
-
+    restart: on-failure:10
 networks:
   treeflex-microservices-network:
