@@ -2,21 +2,15 @@ version: '3.8'
 
 services:
   config-server:
-    image: rzdp97/treeflex-config-server:0.0.1-SNAPSHOT.jar
-    build:
-      context: treeflex-config-server
-      dockerfile: Dockerfile
+    image: rzdp97/treeflex-config-server:0.0.1-SNAPSHOT
     env_file:
       - treeflex-config-server/example.env
     ports:
-    - 8888:8888
+      - 8888:8888
     networks:
       - treeflex-microservices-network
   authorization-server:
-    image: rzdp97/treeflex-authorization-server:0.0.1-SNAPSHOT.jar
-    build:
-      context: treeflex-authorization-server
-      dockerfile: Dockerfile
+    image: rzdp97/treeflex-authorization-server:0.0.1-SNAPSHOT
     env_file:
       - treeflex-authorization-server/example.env
     ports:
@@ -26,5 +20,18 @@ services:
     networks:
       - treeflex-microservices-network
     restart: on-failure:10
+  email-service:
+    image: rzdp97/treeflex-email-service:0.0.1-SNAPSHOT
+    env_file:
+      - treeflex-email-service/example.env
+    ports:
+      - 8085:8085
+    depends_on:
+      - config-server
+      - authorization-server
+    networks:
+      - treeflex-microservices-network
+    restart: on-failure:10
+
 networks:
   treeflex-microservices-network:

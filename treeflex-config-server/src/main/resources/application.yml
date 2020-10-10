@@ -9,6 +9,7 @@ spring:
           search-paths:
             - test-service
             - treeflex-authorization-server
+            - treeflex-email-service
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
   profiles:

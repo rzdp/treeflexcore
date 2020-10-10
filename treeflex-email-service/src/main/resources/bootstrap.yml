@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: treeflex-email-service
+  cloud:
+    config:
+      uri: http://config-server:8888
+  profiles:
+    active: dev
+server:
+  port: 8085
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: 123456
