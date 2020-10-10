@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rzdp/treeflexcore-config.git
+          uri: ${GIT_CONFIG_SERVER_REPOSITORY_URI}
           search-paths:
             - test-service
             - treeflex-authorization-server
@@ -13,6 +13,6 @@ spring:
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
   profiles:
-    active: default
+    active: ${APPLICATION_PROFILE}
 server:
-  port: 8888
+  port: ${APPLICATION_PORT}

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: treeflex-authorization-server
+    name: treeflex-account-service
   profiles:
     active: ${APPLICATION_PROFILE}
   cloud:
