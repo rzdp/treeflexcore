@@ -5,6 +5,6 @@ spring:
     active: dev
   cloud:
     config:
-      uri: http://config-server:8888
+      uri: http://${CONFIGURATION_SERVER_HOSTNAME}:${CONFIGURATION_SERVER_PORT}
 server:
   port: 8080
