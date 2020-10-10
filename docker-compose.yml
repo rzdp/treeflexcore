@@ -4,7 +4,7 @@ services:
   config-server:
     image: rzdp97/treeflex-config-server:0.0.1-SNAPSHOT
     env_file:
-      - treeflex-config-server/example.env
+      - treeflex-config-server/docker.env
     ports:
       - 8888:8888
     networks:
@@ -12,7 +12,7 @@ services:
   authorization-server:
     image: rzdp97/treeflex-authorization-server:0.0.1-SNAPSHOT
     env_file:
-      - treeflex-authorization-server/example.env
+      - treeflex-authorization-server/docker.env
     ports:
       - 8080:8080
     depends_on:
@@ -23,12 +23,25 @@ services:
   email-service:
     image: rzdp97/treeflex-email-service:0.0.1-SNAPSHOT
     env_file:
-      - treeflex-email-service/example.env
+      - treeflex-email-service/docker.env
     ports:
       - 8085:8085
     depends_on:
       - config-server
       - authorization-server
+    networks:
+      - treeflex-microservices-network
+    restart: on-failure:10
+  account-service:
+    image: rzdp97/treeflex-account-service:0.0.1-SNAPSHOT
+    env_file:
+      - treeflex-account-service/docker.env
+    ports:
+    - 8081:8081
+    depends_on:
+      - config-server
+      - authorization-server
+      - email-service
     networks:
       - treeflex-microservices-network
     restart: on-failure:10

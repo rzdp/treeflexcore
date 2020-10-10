@@ -10,6 +10,7 @@ spring:
             - test-service
             - treeflex-authorization-server
             - treeflex-email-service
+            - treeflex-account-service
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
   profiles:

@@ -8,3 +8,8 @@ spring:
       uri: http://${CONFIGURATION_SERVER_HOSTNAME}:${CONFIGURATION_SERVER_PORT}
 server:
   port: ${APPLICATION_PORT}
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: ${SECURITY_OAUTH2_SIGNING_KEY}
