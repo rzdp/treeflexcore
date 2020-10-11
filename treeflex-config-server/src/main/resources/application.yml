@@ -12,6 +12,7 @@ spring:
             - treeflex-email-service
             - treeflex-account-service
             - treeflex-service-dicovery-server
+            - treeflex-api-gateway
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
   profiles:
