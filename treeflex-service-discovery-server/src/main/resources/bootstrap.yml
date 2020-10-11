@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: treeflex-service-discovery-server
+  profiles:
+    active: ${APPLICATION_PROFILE}
+  cloud:
+    config:
+      uri: http://${CONFIGURATION_SERVER_HOSTNAME}:${CONFIGURATION_SERVER_PORT}
+server:
+  port: ${APPLICATION_PORT}
+eureka:
+  instance:
+    hostname: ${SERVICE_DISCOVERY_HOSTNAME}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
