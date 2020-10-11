@@ -42,6 +42,20 @@ services:
     networks:
       - treeflex-microservices-network
     restart: on-failure:10
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - 9411:9411
+    depends_on:
+      - email-service
+      - account-service
+      - api-gateway
+    networks:
+      - treeflex-microservices-network
+    restart: on-failure:10
   email-service:
     image: rzdp97/treeflex-email-service:0.0.1-SNAPSHOT
     env_file:
