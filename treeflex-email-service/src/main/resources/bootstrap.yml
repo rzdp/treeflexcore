@@ -13,3 +13,7 @@ security:
     resource:
       jwt:
         key-value: ${SECURITY_OAUTH2_SIGNING_KEY}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${SERVICE_DISCOVERY_SERVER_HOSTNAME}:${SERVICE_DISCOVERY_SERVER_PORT}/eureka

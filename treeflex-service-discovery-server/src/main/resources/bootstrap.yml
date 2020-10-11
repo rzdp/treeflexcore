@@ -10,7 +10,7 @@ server:
   port: ${APPLICATION_PORT}
 eureka:
   instance:
-    hostname: ${SERVICE_DISCOVERY_HOSTNAME}
+    hostname: ${SERVICE_DISCOVERY_SERVER_HOSTNAME}
   client:
     register-with-eureka: false
     fetch-registry: false
