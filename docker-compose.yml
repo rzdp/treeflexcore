@@ -9,6 +9,14 @@ services:
       - 8888:8888
     networks:
       - treeflex-microservices-network
+  service-discovery-server:
+    image: rzdp97/treeflex-service-discovery-server:0.0.1-SNAPSHOT
+    env_file:
+      - treeflex-service-discovery-server/docker.env
+    ports:
+      - 8761:8761
+    networks:
+      - treeflex-microservices-network
   authorization-server:
     image: rzdp97/treeflex-authorization-server:0.0.1-SNAPSHOT
     env_file:
@@ -17,6 +25,7 @@ services:
       - 8080:8080
     depends_on:
       - config-server
+      - service-discovery-server
     networks:
       - treeflex-microservices-network
     restart: on-failure:10
@@ -28,6 +37,7 @@ services:
       - 8085:8085
     depends_on:
       - config-server
+      - service-discovery-server
       - authorization-server
     networks:
       - treeflex-microservices-network
@@ -40,11 +50,11 @@ services:
       - 8081:8081
     depends_on:
       - config-server
+      - service-discovery-server
       - authorization-server
       - email-service
     networks:
       - treeflex-microservices-network
     restart: on-failure:10
-
 networks:
   treeflex-microservices-network:
