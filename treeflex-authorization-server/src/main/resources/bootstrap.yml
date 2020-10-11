@@ -8,3 +8,7 @@ spring:
       uri: http://${CONFIGURATION_SERVER_HOSTNAME}:${CONFIGURATION_SERVER_PORT}
 server:
   port: ${APPLICATION_PORT}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${SERVICE_DISCOVERY_SERVER_HOSTNAME}:${SERVICE_DISCOVERY_SERVER_PORT}/eureka
