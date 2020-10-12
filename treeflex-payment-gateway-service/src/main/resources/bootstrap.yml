@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: treeflex-payment-gateway-service
+  cloud:
+    config:
+      uri: http://${CONFIGURATION_SERVER_HOSTNAME}:${CONFIGURATION_SERVER_PORT}
+  profiles:
+    active: ${APPLICATION_PROFILE}
+  zipkin:
+    base-url: http://${ZIPKIN_SERVER_HOSTNAME}:${ZIPKIN_SERVER_PORT}/
+  sleuth:
+    sampler:
+      probability: 1.0
+server:
+  port: ${APPLICATION_PORT}
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: ${SECURITY_OAUTH2_SIGNING_KEY}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${SERVICE_DISCOVERY_SERVER_HOSTNAME}:${SERVICE_DISCOVERY_SERVER_PORT}/eureka
+
