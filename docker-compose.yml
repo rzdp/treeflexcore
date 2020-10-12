@@ -70,6 +70,20 @@ services:
     networks:
       - treeflex-microservices-network
     restart: on-failure:10
+  payment-gateway-service:
+    image: rzdp97/treeflex-payment-gateway-service:0.0.1-SNAPSHOT
+    env_file:
+      - treeflex-payment-gateway-service/docker.env
+    ports:
+      - 8084:8084
+    depends_on:
+      - config-server
+      - service-discovery-server
+      - authorization-server
+      - api-gateway
+    networks:
+      - treeflex-microservices-network
+    restart: on-failure:10
   account-service:
     image: rzdp97/treeflex-account-service:0.0.1-SNAPSHOT
     env_file:
@@ -81,6 +95,7 @@ services:
       - service-discovery-server
       - authorization-server
       - email-service
+      - payment-gateway-service
       - api-gateway
     networks:
       - treeflex-microservices-network
